@@ -1,0 +1,85 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 背景图片设置 */
+
+body {
+    background: url('/assets/images/login_bg.jpg') no-repeat;
+    background-size: cover;
+}
+
+
+/* logo模块 */
+
+.logo {
+    height: 60px;
+    margin: 20px 0 0 100px;
+    background: url('/assets/images/logo.png') no-repeat;
+    background-size: contain;
+}
+
+
+/* 登录模块 */
+
+
+/* 
+.login {
+    display: none;
+} */
+
+.login,
+.register {
+    /* 登录和注册盒子在同一位置 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 310px;
+    background-color: #fff;
+}
+
+
+/* 登录下面css与注册共用 */
+
+.title {
+    height: 50px;
+    background: url('/assets/images/login_title.png') no-repeat center;
+}
+
+.layui-form-item {
+    /* 父相 */
+    position: relative;
+    margin: 15px 20px;
+}
+
+.layui-input {
+    padding-left: 40px;
+}
+
+.goto-reg {
+    float: right;
+}
+
+.layui-icon {
+    /* 子绝 */
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+
+/* 注册模块 */
+
+.register {
+    /* 默认隐藏 */
+    display: none;
+}
+
+.goto-login {
+    float: right;
+}
