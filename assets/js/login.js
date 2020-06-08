@@ -80,7 +80,7 @@ $(function() {
                     // 存储token（这是需要进入有权限（接口）的令牌）
                     localStorage.setItem('token', backData.token);
                     // 跳转页面（首页）
-                    // window.location.href = '/index.html';
+                    window.location.href = '/index.html';
                 };
             }
         });

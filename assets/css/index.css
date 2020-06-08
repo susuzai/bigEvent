@@ -1,0 +1,44 @@
+/* 字体图标设置样式 */
+
+.layui-icon {
+    position: relative;
+    top: 1px;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.layui-nav-child a {
+    margin-left: 20px;
+    font-size: 12px;
+}
+
+.layui-icon-app {
+    font-size: 12px;
+}
+
+
+/* 用户头像以及欢迎语 */
+
+.userinfo {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+
+/* 默认头像 用户名的首字符 */
+
+.text-pic {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 20px;
+    background-color: #009688;
+    color: #fff;
+    border-radius: 50%;
+    /* 默认隐藏 */
+    display: none;
+}
