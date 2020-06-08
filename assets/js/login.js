@@ -37,7 +37,7 @@ $(function() {
     });
 
     // 表单验证
-    // 第一步：实例化layui的form对象
+    // 第一步：加载form内置模块
     var form = layui.form;
     // 第二步：自定义验证需求
     form.verify({

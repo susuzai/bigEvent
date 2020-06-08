@@ -10,6 +10,8 @@ body {
 body {
     background: url('/assets/images/login_bg.jpg') no-repeat;
     background-size: cover;
+    /* 登录界面出现滚动条  解决 */
+    overflow: hidden;
 }
 
 
