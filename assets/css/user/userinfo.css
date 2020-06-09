@@ -1,0 +1,13 @@
+/* 给body设置背景色 */
+
+body {
+    padding: 15px;
+    background-color: #f2f3f5;
+}
+
+
+/* 设置表单样式 */
+
+form {
+    width: 500px;
+}
