@@ -42,3 +42,11 @@
     /* 默认隐藏 */
     display: none;
 }
+
+
+/* iframe设置样式 (主体内容部分) */
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
