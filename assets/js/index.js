@@ -4,11 +4,16 @@ $(function() {
     getUserData();
 
     // 2.点击退出
-    $('.layui-icon-logout').on('click', function() {
-        // 2.1跳转到login页面
-        window.location.href = '/login.html';
-        // 2.2清除token存储
-        localStorage.removeItem('token');
+    $('.loginout').on('click', function() {
+        layer.confirm('确定要退出吗?', { icon: 3, title: '提示' }, function(index) {
+            //do something 
+            // 2.1清除token存储
+            localStorage.removeItem('token');
+            // 2.2跳转到login页面
+            window.location.href = '/login.html';
+            // 默认关掉弹出框
+            layer.close(index);
+        });
     });
 });
 /**
