@@ -25,12 +25,7 @@ function getUserData() {
     // 1.1发送ajax请求
     $.ajax({
         type: 'GET',
-        url: 'http://www.liulongbin.top:3007/my/userinfo',
-        // 设置请求头
-        headers: {
-            // 将本地存储的token值传入
-            'Authorization': localStorage.getItem('token')
-        },
+        url: '/my/userinfo',
         // 发送ajax成功后执行的代码
         success: function(backData) {
             // 1.2判断成功的情况
@@ -52,16 +47,6 @@ function getUserData() {
                     // 自定义图片隐藏
                     $('.layui-nav-img').hide();
                 };
-            };
-        },
-        // 发送ajax完成后执行的代码
-        complete: function(backData) {
-            // console.log(backData);
-            if (backData.responseJSON.status === 1) { // 拥有虚假token或者是没有token情况
-                // 先移除token值
-                localStorage.removeItem('token');
-                // 跳转到login页面
-                window.location.href = '/login.html';
             };
         }
     });

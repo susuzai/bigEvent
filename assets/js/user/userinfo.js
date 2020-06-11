@@ -10,21 +10,8 @@ $(function() {
         // 2.2发送ajax请求
         $.ajax({
             type: 'POST',
-            url: 'http://www.liulongbin.top:3007/my/userinfo',
+            url: '/my/userinfo',
             data: $(this).serialize(), //检查form的name属性
-            headers: {
-                // 携带token
-                'Authorization': localStorage.getItem('token')
-            },
-            complete: function(backData) {
-                // 拥有假token或者没有token情况
-                if (backData.responseJSON.status === 1 && backData.responseJSON.message === '身份认证失败！') {
-                    // 清除token
-                    localStorage.removeItem('token');
-                    // 跳转到login页面
-                    window.parent.location.href = '/login.html';
-                };
-            },
             success: function(backData) {
                 // 给出相应提示
                 layer.msg(backData.message);
@@ -52,20 +39,7 @@ function getUserInfo() {
     // 1.发送ajax请求
     $.ajax({
         type: 'GET',
-        url: 'http://www.liulongbin.top:3007/my/userinfo',
-        headers: {
-            // 携带token
-            'Authorization': localStorage.getItem('token')
-        },
-        complete: function(backData) {
-            // 拥有假token或者没有token情况
-            if (backData.responseJSON.status === 1 && backData.responseJSON.message === '身份认证失败！') {
-                // 清除token
-                localStorage.removeItem('token');
-                // 跳转到login页面
-                window.parent.location.href = '/login.html';
-            };
-        },
+        url: '/my/userinfo',
         success: function(backData) {
             if (backData.status === 0) {
                 // 加载form对象

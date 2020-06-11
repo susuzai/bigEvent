@@ -41,7 +41,7 @@ $(function() {
         // 2.3发送ajax请求
         $.ajax({
             type: 'POST',
-            url: 'http://www.liulongbin.top:3007/my/updatepwd',
+            url: '/my/updatepwd',
             data: $(this).serialize(), //检查form表单name属性
             success: function(backData) {
                 // 无论修改成功与否给出提示
@@ -51,20 +51,6 @@ $(function() {
                     // 调用DOM对象的 reset()方法
                     $('form')[0].reset();
                 }
-            },
-            // 设置请求头（携带token）
-            headers: {
-                'Authorization': localStorage.getItem('token')
-            },
-            // 发送ajax完成后执行
-            complete: function(backData) {
-                // 携带假token或者没有token的情况
-                if (backData.responseJSON.status === 1) {
-                    // 清除token
-                    localStorage.removeItem('token');
-                    // 跳转到login页面
-                    window.parent.location.href = '/login.html';
-                };
             }
         });
 
