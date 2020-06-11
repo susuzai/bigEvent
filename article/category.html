@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章类别</title>
+    <!-- 导入 layui  css -->
+    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
+    <!-- 导入 自己写的 css -->
+    <link rel="stylesheet" href="/assets/css/article/category.css">
+
+    <!-- 导入jq js -->
+    <script src="/assets/lib/jquery.js"></script>
+    <!-- 导入common js -->
+    <script src="/assets/js/common.js"></script>
+    <!-- 导入 layui js -->
+    <script src="/assets/lib/layui/layui.all.js"></script>
+    <!-- 导入 自己写的 js -->
+    <script src="/assets/js/article/category.js"></script>
+</head>
+
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">文章类别管理
+            <button type="button" class="layui-btn layui-btn-normal layui-btn-sm addCategory">添加类别</button>
+        </div>
+        <div class="layui-card-body">
+            <!-- 主体：文章类别表格 -->
+            <table class="layui-table">
+                <colgroup>
+                    <col width="40%">
+                    <col width="40%">
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>分类名称</th>
+                        <th>分类别名</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 动态添加的表格内容 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- 导入模板引擎js -->
+    <script src="/assets/lib/template-web.js"></script>
+    <!-- 进入页面渲染的模板引擎 开始 -->
+    <script type="text/html" id="tpl-category">
+        {{each data v}}
+        <tr>
+            <td>{{v.name}}</td>
+            <td>{{v.alias}}</td>
+            <td>
+                <button data-id="{{v.Id}}" data-name="{{v.name}}" data-alias="{{v.alias}}" type="button" class="layui-btn layui-btn-xs exit">编辑</button>
+                <button data-id="{{v.Id}}" type="button" class="layui-btn layui-btn-xs layui-btn-danger delete">删除</button>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+    <!-- 进入页面渲染的模板引擎 结束 -->
+
+    <!-- 点击“添加类别”的弹出框  开始 -->
+    <script type="text/html" id="tpl-add">
+        <!-- 主体：表单 -->
+        <form class="layui-form add-form" action="" style="margin:30px 30px 0 0">
+            <!-- 1.分类名称 -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <!-- 2.分类别名 -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类别名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="alias" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <!-- 3.确认添加、重置  按钮 -->
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">确认添加</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </script>
+    <!-- 点击“添加类别”的弹出框  结束 -->
+
+    <!-- 点击“编辑”的弹出框  开始 -->
+    <script type="text/html" id="tpl-exit">
+        <!-- 主体：表单 -->
+        <form class="layui-form exit-form" lay-filter="exit-form" action="" style="margin:30px 30px 0 0">
+            <!-- 隐藏域：存放id -->
+            <input type="hidden" name="id">
+            <!-- 1.分类名称 -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <!-- 2.分类别名 -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类别名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="alias" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <!-- 3.确认修改  按钮 -->
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">确认修改</button>
+                </div>
+            </div>
+        </form>
+    </script>
+    <!-- 点击“编辑”的弹出框  结束 -->
+</body>
+
+</html>

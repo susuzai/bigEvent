@@ -1,0 +1,16 @@
+body {
+    padding: 15px;
+    background-color: #f2f3f5;
+}
+
+
+/* 文章类别管理卡片设置 */
+
+.layui-card-header {
+    /* 设置伸缩布局 */
+    display: flex;
+    /* 子元素两端对齐 */
+    justify-content: space-between;
+    /* 居中对齐 */
+    align-items: center;
+}
