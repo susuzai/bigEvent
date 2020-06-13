@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章列表</title>
+    <!-- 导入layui css -->
+    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
+    <!-- 导入自己的 css -->
+    <link rel="stylesheet" href="/assets/css/article/article.css">
+
+    <!-- 导入jq js -->
+    <script src="/assets/lib/jquery.js"></script>
+    <!-- 导入common.js -->
+    <script src="/assets/js/common.js"></script>
+    <!-- 导入layui js -->
+    <script src="/assets/lib/layui/layui.all.js"></script>
+    <!-- 导入 模板引擎js -->
+    <script src="/assets/lib/template-web.js"></script>
+    <!-- 导入自己的 js -->
+    <script src="/assets/js/article/article.js"></script>
+</head>
+
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">文章列表</div>
+        <div class="layui-card-body">
+            <!-- 主体部分 -->
+            <!-- 1.下拉框+筛选 -->
+            <form class="layui-form search_form" action="">
+                <!-- 下拉框 -->
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <div class="layui-input-inline" style="width: 200px;">
+                            <select name="cate_id" lay-verify="" class="category">
+                                <!-- 需要发送ajax，通过模板引擎渲染出来 -->
+                              </select>
+                        </div>
+                        <div class="layui-input-inline" style="width: 200px;">
+                            <select name="state" lay-verify="">
+                                <option value="">所有状态</option>
+                                <option value="已发布">已发布</option>
+                                <option value="草稿">草稿</option>
+                              </select>
+                        </div>
+                    </div>
+                    <!-- 筛选按钮 -->
+                    <div class="layui-inline">
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">筛选</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            <!-- 2.文章表格 -->
+            <table class="layui-table">
+                <colgroup>
+                    <col width="35%">
+                    <col width="15%">
+                    <col width="20%">
+                    <col width="15%">
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>文章标题</th>
+                        <th>分类</th>
+                        <th>发表时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 文章列表需要动态渲染生成 -->
+                </tbody>
+            </table>
+            <!-- 3.分页 -->
+            <div id="page"></div>
+        </div>
+    </div>
+    <!-- 文章列表渲染的模板 开始 -->
+    <script id="tpl-article" type="text/html">
+        {{each data v}}
+        <tr>
+            <td>{{v.title}}</td>
+            <td>{{v.cate_name}}</td>
+            <td>{{v.pub_date}}</td>
+            <td>{{v.state}}</td>
+            <td>
+                <a href="/article/edit.html?id={{v.Id}}" target="fm" class="layui-btn layui-btn-xs">编辑</a>
+                <button data-id="{{v.Id}}" type="button" class="layui-btn layui-btn-xs layui-btn-danger delete">删除</button>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+    <!-- 文章列表渲染的模板 结束 -->
+
+    <!-- 文章分类渲染的模板 开始 -->
+    <script type="text/html" id="tpl-cates">
+        <option value="">所有分类</option>
+        {{each data v}}
+        <option value="{{v.Id}}">{{v.name}}</option>
+        {{/each}}
+    </script>
+    <!-- 文章分类渲染的模板 结束 -->
+</body>
+
+</html>
